@@ -6,10 +6,13 @@
     <session-factory>
         <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.password">grtcrl</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/test</property>
-        <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.connection.password">sviluppo</property>
+        <property name="hibernate.connection.url">jdbc:mysql://192.168.1.230:3306/Sicimi01</property>
+        <property name="hibernate.connection.username">sviluppo</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
         <property name="hibernate.search.autoregister_listeners">false</property>
+        <mapping class="sicimi.api.persistence.hibernate.Sicammaziende" />
+        <mapping class="sicimi.api.persistence.hibernate.Sicammcommesse" />
+        <mapping class="sicimi.api.persistence.hibernate.Sicammtipo" />
     </session-factory>
 </hibernate-configuration>

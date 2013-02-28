@@ -1,16 +1,21 @@
 package sicimi;
 
-import sicimi.api.Commesse;
+import java.util.List;
+
+import sicimi.api.SearchCommesse;
+import sicimi.api.persistence.hibernate.Sicammcommesse;
+
 
 public class Starter {
 	
 	public static void main(String[] args) {
-		Commesse commesse = new Commesse();
-		Object[][] result = commesse.search(2009, "1", 746, new Boolean(true));
-		System.out.println(result.length);
-		for (int i = 0; i < result.length; i++) {
-			System.out.println(result[i][1]);
+		SearchCommesse commesse = new SearchCommesse();
+		List<Sicammcommesse> result = commesse.run(2009, "1", null, null);
+		System.out.println(result.size());
+		for (Sicammcommesse sicammcommesse : result) {
+			System.out.println(sicammcommesse.getSacdescrizione());
 		}
+		
 	}
 
 }
