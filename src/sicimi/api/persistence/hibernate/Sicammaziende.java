@@ -1,6 +1,6 @@
 package sicimi.api.persistence.hibernate;
 
-// Generated Feb 28, 2013 8:40:07 AM by Hibernate Tools 3.4.0.CR1
+// Generated Feb 28, 2013 2:34:54 PM by Hibernate Tools 3.4.0.CR1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -118,6 +118,11 @@ public class Sicammaziende implements java.io.Serializable {
 
 	public void setSicammcommesses(Set<Sicammcommesse> sicammcommesses) {
 		this.sicammcommesses = sicammcommesses;
+	}
+	
+	@Override
+	public String toString() {
+		return getSaaragionesociale();
 	}
 
 }

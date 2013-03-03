@@ -1,6 +1,6 @@
 package sicimi.api.persistence.hibernate;
 
-// Generated Feb 28, 2013 8:40:07 AM by Hibernate Tools 3.4.0.CR1
+// Generated Feb 28, 2013 2:34:54 PM by Hibernate Tools 3.4.0.CR1
 
 import java.util.Date;
 import javax.persistence.Column;

@@ -11,6 +11,7 @@
         <property name="hibernate.connection.username">sviluppo</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
         <property name="hibernate.search.autoregister_listeners">false</property>
+        <mapping class="sicimi.api.persistence.hibernate.Sicammlog" />
         <mapping class="sicimi.api.persistence.hibernate.Sicammaziende" />
         <mapping class="sicimi.api.persistence.hibernate.Sicammcommesse" />
         <mapping class="sicimi.api.persistence.hibernate.Sicammtipo" />
