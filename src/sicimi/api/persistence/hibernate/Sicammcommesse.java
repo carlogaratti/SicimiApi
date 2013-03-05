@@ -1,6 +1,6 @@
 package sicimi.api.persistence.hibernate;
 
-// Generated Feb 28, 2013 2:34:54 PM by Hibernate Tools 3.4.0.CR1
+// Generated Mar 4, 2013 4:32:35 PM by Hibernate Tools 3.4.0.CR1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -25,6 +25,7 @@ public class Sicammcommesse implements java.io.Serializable {
 	private Integer sacid;
 	private Sicammaziende sicammaziende;
 	private Sicammtipo sicammtipo;
+	private Sicammindirizzi sicammindirizzi;
 	private String saccommessa;
 	private Date sacdata;
 	private String sacdescrizione;
@@ -34,19 +35,19 @@ public class Sicammcommesse implements java.io.Serializable {
 	private Boolean sacevasa;
 	private Boolean sacspostata;
 	private Byte sacprodotto;
-	private Integer sacdestinazione;
 	private String sacnote;
 
 	public Sicammcommesse() {
 	}
 
 	public Sicammcommesse(Sicammaziende sicammaziende, Sicammtipo sicammtipo,
-			String saccommessa, Date sacdata, String sacdescrizione,
-			Date sacdataconsegna, Float sacimporto, String sacriferimenti,
-			Boolean sacevasa, Boolean sacspostata, Byte sacprodotto,
-			Integer sacdestinazione, String sacnote) {
+			Sicammindirizzi sicammindirizzi, String saccommessa, Date sacdata,
+			String sacdescrizione, Date sacdataconsegna, Float sacimporto,
+			String sacriferimenti, Boolean sacevasa, Boolean sacspostata,
+			Byte sacprodotto, String sacnote) {
 		this.sicammaziende = sicammaziende;
 		this.sicammtipo = sicammtipo;
+		this.sicammindirizzi = sicammindirizzi;
 		this.saccommessa = saccommessa;
 		this.sacdata = sacdata;
 		this.sacdescrizione = sacdescrizione;
@@ -56,7 +57,6 @@ public class Sicammcommesse implements java.io.Serializable {
 		this.sacevasa = sacevasa;
 		this.sacspostata = sacspostata;
 		this.sacprodotto = sacprodotto;
-		this.sacdestinazione = sacdestinazione;
 		this.sacnote = sacnote;
 	}
 
@@ -89,6 +89,16 @@ public class Sicammcommesse implements java.io.Serializable {
 
 	public void setSicammtipo(Sicammtipo sicammtipo) {
 		this.sicammtipo = sicammtipo;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "SACdestinazione")
+	public Sicammindirizzi getSicammindirizzi() {
+		return this.sicammindirizzi;
+	}
+
+	public void setSicammindirizzi(Sicammindirizzi sicammindirizzi) {
+		this.sicammindirizzi = sicammindirizzi;
 	}
 
 	@Column(name = "SACcommessa", length = 7)
@@ -172,15 +182,6 @@ public class Sicammcommesse implements java.io.Serializable {
 
 	public void setSacprodotto(Byte sacprodotto) {
 		this.sacprodotto = sacprodotto;
-	}
-
-	@Column(name = "SACdestinazione")
-	public Integer getSacdestinazione() {
-		return this.sacdestinazione;
-	}
-
-	public void setSacdestinazione(Integer sacdestinazione) {
-		this.sacdestinazione = sacdestinazione;
 	}
 
 	@Column(name = "SACnote", length = 300)

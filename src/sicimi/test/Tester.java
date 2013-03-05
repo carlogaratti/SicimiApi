@@ -6,20 +6,33 @@ import java.util.Map;
 
 import sicimi.api.SearchCliente;
 import sicimi.api.SearchCommesse;
+import sicimi.api.SearchOrdini;
 import sicimi.api.SearchTipo;
 import sicimi.api.exception.ApiException;
 import sicimi.api.persistence.hibernate.Sicammaziende;
 import sicimi.api.persistence.hibernate.Sicammcommesse;
 import sicimi.api.persistence.hibernate.Sicammtipo;
+import sicimi.api.persistence.hibernate.Siccomordini;
 
 
 public class Tester {
 	
 	public static void main(String[] args) {
-		searchCommesse();
-		searchCommesseWithMap();
+		//searchCommesse();
+		//searchCommesseWithMap();
 		//searchTipo();
 		//searchCliente();
+		searchOrdiniByCommessa();
+		
+	}
+
+	private static void searchOrdiniByCommessa() {
+		SearchOrdini searchOrdini = new SearchOrdini();
+		searchOrdini.runByCommessa(18);
+		System.out.println(searchOrdini.result().size());
+		for (Siccomordini anOrdine : searchOrdini.result()) {
+			System.out.println();
+		}
 		
 	}
 

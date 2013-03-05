@@ -15,6 +15,7 @@ import sicimi.api.exception.ApiException;
 import sicimi.api.persistence.hibernate.Sicammaziende;
 import sicimi.api.persistence.hibernate.Sicammcommesse;
 import sicimi.api.persistence.hibernate.Sicammtipo;
+import sicimi.api.persistence.hibernate.Siccomordini;
 import sicimi.api.util.HibernateUtil;
 
 
@@ -39,7 +40,12 @@ public class AskFor {
 	
 	public static final String allTipo = "select tipo from Sicammtipo tipo";
 	
-	public static final String allCliente = "select aziende from Sicammaziende aziende";
+	public static final String allCliente = " select aziende from Sicammaziende aziende " +
+											" where saacatid = 12";
+	
+	public static final String ordinibyCommessa = " select ordini from Siccomordini ordini where ordini.scrcommessa = :scrcommessa";
+	
+	
 
 
 	public List<Sicammcommesse> commesse(Map<String, Object> mapParameters) throws ApiException {
@@ -56,6 +62,15 @@ public class AskFor {
 			throw new ApiException(e, allCommesse, logNumber);
 		}
 	}
+	
+	public List<Siccomordini> ordinibyCommessa(Integer commessa) {
+		Session session = factory.openSession();	
+		Query data = session.createQuery(ordinibyCommessa);
+		data.setParameter("scrcommessa", commessa);
+		List<Siccomordini> result = data.list();
+		session.close();
+		return result;
+}
 	
 	public List<Sicammaziende> clienti() {
 			Session session = factory.openSession();	

@@ -1,6 +1,6 @@
 package sicimi.api.persistence.hibernate;
 
-// Generated Feb 28, 2013 2:34:54 PM by Hibernate Tools 3.4.0.CR1
+// Generated Mar 4, 2013 4:32:35 PM by Hibernate Tools 3.4.0.CR1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -18,7 +18,7 @@ import javax.persistence.Table;
 @Table(name = "SICAMMTipo", catalog = "Sicimi01")
 public class Sicammtipo implements java.io.Serializable {
 
-	private String satid;
+	private byte satid;
 	private String sattipo;
 	private String satnote;
 	private Set<Sicammcommesse> sicammcommesses = new HashSet<Sicammcommesse>(0);
@@ -26,11 +26,11 @@ public class Sicammtipo implements java.io.Serializable {
 	public Sicammtipo() {
 	}
 
-	public Sicammtipo(String satid) {
+	public Sicammtipo(byte satid) {
 		this.satid = satid;
 	}
 
-	public Sicammtipo(String satid, String sattipo, String satnote,
+	public Sicammtipo(byte satid, String sattipo, String satnote,
 			Set<Sicammcommesse> sicammcommesses) {
 		this.satid = satid;
 		this.sattipo = sattipo;
@@ -40,11 +40,11 @@ public class Sicammtipo implements java.io.Serializable {
 
 	@Id
 	@Column(name = "SATid", unique = true, nullable = false)
-	public String getSatid() {
+	public byte getSatid() {
 		return this.satid;
 	}
 
-	public void setSatid(String satid) {
+	public void setSatid(byte satid) {
 		this.satid = satid;
 	}
 
@@ -73,11 +73,6 @@ public class Sicammtipo implements java.io.Serializable {
 
 	public void setSicammcommesses(Set<Sicammcommesse> sicammcommesses) {
 		this.sicammcommesses = sicammcommesses;
-	}
-	
-	@Override
-	public String toString() {
-		return sattipo  + "  " + satnote;
 	}
 
 }

@@ -1,6 +1,6 @@
 package sicimi.api.persistence.hibernate;
 
-// Generated Feb 28, 2013 2:34:54 PM by Hibernate Tools 3.4.0.CR1
+// Generated Mar 4, 2013 4:32:35 PM by Hibernate Tools 3.4.0.CR1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -8,6 +8,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -19,12 +21,14 @@ import javax.persistence.Table;
 public class Sicammaziende implements java.io.Serializable {
 
 	private int saaid;
+	private Sicammindirizzi sicammindirizzi;
 	private Integer saacatid;
 	private String saaragionesociale;
 	private String saapiva;
 	private String saanote;
-	private Integer saaindirizzostd;
 	private Integer saapagamentostd;
+	private Set<Sicammindirizzi> sicammindirizzis = new HashSet<Sicammindirizzi>(
+			0);
 	private Set<Sicammcommesse> sicammcommesses = new HashSet<Sicammcommesse>(0);
 
 	public Sicammaziende() {
@@ -34,16 +38,19 @@ public class Sicammaziende implements java.io.Serializable {
 		this.saaid = saaid;
 	}
 
-	public Sicammaziende(int saaid, Integer saacatid, String saaragionesociale,
-			String saapiva, String saanote, Integer saaindirizzostd,
-			Integer saapagamentostd, Set<Sicammcommesse> sicammcommesses) {
+	public Sicammaziende(int saaid, Sicammindirizzi sicammindirizzi,
+			Integer saacatid, String saaragionesociale, String saapiva,
+			String saanote, Integer saapagamentostd,
+			Set<Sicammindirizzi> sicammindirizzis,
+			Set<Sicammcommesse> sicammcommesses) {
 		this.saaid = saaid;
+		this.sicammindirizzi = sicammindirizzi;
 		this.saacatid = saacatid;
 		this.saaragionesociale = saaragionesociale;
 		this.saapiva = saapiva;
 		this.saanote = saanote;
-		this.saaindirizzostd = saaindirizzostd;
 		this.saapagamentostd = saapagamentostd;
+		this.sicammindirizzis = sicammindirizzis;
 		this.sicammcommesses = sicammcommesses;
 	}
 
@@ -55,6 +62,16 @@ public class Sicammaziende implements java.io.Serializable {
 
 	public void setSaaid(int saaid) {
 		this.saaid = saaid;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "SAAindirizzostd")
+	public Sicammindirizzi getSicammindirizzi() {
+		return this.sicammindirizzi;
+	}
+
+	public void setSicammindirizzi(Sicammindirizzi sicammindirizzi) {
+		this.sicammindirizzi = sicammindirizzi;
 	}
 
 	@Column(name = "SAAcatid")
@@ -93,15 +110,6 @@ public class Sicammaziende implements java.io.Serializable {
 		this.saanote = saanote;
 	}
 
-	@Column(name = "SAAindirizzostd")
-	public Integer getSaaindirizzostd() {
-		return this.saaindirizzostd;
-	}
-
-	public void setSaaindirizzostd(Integer saaindirizzostd) {
-		this.saaindirizzostd = saaindirizzostd;
-	}
-
 	@Column(name = "SAApagamentostd")
 	public Integer getSaapagamentostd() {
 		return this.saapagamentostd;
@@ -112,17 +120,21 @@ public class Sicammaziende implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sicammaziende")
+	public Set<Sicammindirizzi> getSicammindirizzis() {
+		return this.sicammindirizzis;
+	}
+
+	public void setSicammindirizzis(Set<Sicammindirizzi> sicammindirizzis) {
+		this.sicammindirizzis = sicammindirizzis;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sicammaziende")
 	public Set<Sicammcommesse> getSicammcommesses() {
 		return this.sicammcommesses;
 	}
 
 	public void setSicammcommesses(Set<Sicammcommesse> sicammcommesses) {
 		this.sicammcommesses = sicammcommesses;
-	}
-	
-	@Override
-	public String toString() {
-		return getSaaragionesociale();
 	}
 
 }

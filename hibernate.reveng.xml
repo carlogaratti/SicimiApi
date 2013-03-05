@@ -8,4 +8,8 @@
 	</table-filter>
 	<table-filter match-name="SICAMMTipo" match-catalog="Sicimi01"></table-filter>
 	<table-filter match-name="SICAMMLog" match-catalog="Sicimi01"></table-filter>
+	<table-filter match-name="SICAMMIndirizzi"
+		match-catalog="Sicimi01">
+	</table-filter>
+	<table-filter match-name="SICCOMOrdini" match-catalog="Sicimi01"></table-filter>
 </hibernate-reverse-engineering>

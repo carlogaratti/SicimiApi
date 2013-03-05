@@ -1,6 +1,6 @@
 package sicimi.api.persistence.hibernate;
 
-// Generated Feb 28, 2013 2:34:54 PM by Hibernate Tools 3.4.0.CR1
+// Generated Mar 4, 2013 4:32:35 PM by Hibernate Tools 3.4.0.CR1
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,7 +15,7 @@ import javax.persistence.Table;
 public class Sicammlog implements java.io.Serializable {
 
 	private int idSicammlog;
-	private String sql;
+	private String sqlExecuted;
 	private String parametri;
 
 	public Sicammlog() {
@@ -25,9 +25,9 @@ public class Sicammlog implements java.io.Serializable {
 		this.idSicammlog = idSicammlog;
 	}
 
-	public Sicammlog(int idSicammlog, String sql, String parametri) {
+	public Sicammlog(int idSicammlog, String sqlExecuted, String parametri) {
 		this.idSicammlog = idSicammlog;
-		this.sql = sql;
+		this.sqlExecuted = sqlExecuted;
 		this.parametri = parametri;
 	}
 
@@ -41,16 +41,16 @@ public class Sicammlog implements java.io.Serializable {
 		this.idSicammlog = idSicammlog;
 	}
 
-	@Column(name = "sql", length = 45)
-	public String getSql() {
-		return this.sql;
+	@Column(name = "sqlExecuted", length = 4000)
+	public String getSqlExecuted() {
+		return this.sqlExecuted;
 	}
 
-	public void setSql(String sql) {
-		this.sql = sql;
+	public void setSqlExecuted(String sqlExecuted) {
+		this.sqlExecuted = sqlExecuted;
 	}
 
-	@Column(name = "parametri", length = 45)
+	@Column(name = "parametri", length = 4000)
 	public String getParametri() {
 		return this.parametri;
 	}
