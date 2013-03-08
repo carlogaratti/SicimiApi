@@ -10,15 +10,11 @@ import sicimi.api.persistence.AskFor;
 import sicimi.api.persistence.hibernate.Sicammcommesse;
 
 
-public class SearchCommesse {
+public class SearchCommesse extends Search{
 
-	private AskFor askFor;
-	private HashMap<String, Object> mapParameters;
-	private List<Object> list;
 	
 	public SearchCommesse() {
-		this.askFor = new AskFor();
-		mapParameters = new HashMap<String, Object>();
+		super();
 	}
 	
 	public void runWhitYear(Integer year) throws ApiException{

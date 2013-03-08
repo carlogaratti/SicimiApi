@@ -9,7 +9,7 @@ import sicimi.api.persistence.AskFor;
 import sicimi.api.persistence.hibernate.SiccomddtIn;
 import sicimi.api.persistence.hibernate.SiccomddtInExtended;
 
-public class SearchDDTIn {
+public class SearchDDTIn extends Search{
 	
 	private List<SiccomddtIn> result;
 

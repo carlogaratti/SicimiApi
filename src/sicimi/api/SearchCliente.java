@@ -8,13 +8,8 @@ import sicimi.api.exception.ApiException;
 import sicimi.api.persistence.AskFor;
 import sicimi.api.persistence.hibernate.Sicammaziende;
 
-public class SearchCliente {
-private AskFor askFor;
-private List<Object> list;
-	
-	public SearchCliente() {
-		this.askFor = new AskFor();
-	}
+public class SearchCliente extends Search{
+
 
 	public void runAll() throws ApiException {
 		list = askFor.exec("allCliente", new HashMap<String, Object>());

@@ -1,22 +1,14 @@
 package sicimi.api;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import sicimi.api.persistence.AskFor;
-import sicimi.api.persistence.hibernate.SiccomddtOut;
 import sicimi.api.persistence.hibernate.SiccomfattureClienti;
 
-public class SearchFattureCliente {
-	private AskFor askFor;
-	private List<Object> list;
-	private HashMap<String, Object> mapParameters;
+public class SearchFattureCliente extends Search{
 	
 	public SearchFattureCliente() {
-		this.askFor = new AskFor();
-		mapParameters = new HashMap<String, Object>();
+		super();
 	}
 	
 	public void runByCommessa(Integer commessa) {
@@ -29,7 +21,6 @@ public class SearchFattureCliente {
 		List<SiccomfattureClienti> listFattureCliente = new ArrayList<SiccomfattureClienti>();
 		for (Object anElement : list) {
 			listFattureCliente.add((SiccomfattureClienti)anElement);
-			
 		}
 		return listFattureCliente;
 	}
