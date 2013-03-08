@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC
 "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
@@ -11,11 +11,17 @@
         <property name="hibernate.connection.username">sviluppo</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
         <property name="hibernate.search.autoregister_listeners">false</property>
+        <mapping class="sicimi.api.persistence.hibernate.SiccomddtInExtended" />
         <mapping class="sicimi.api.persistence.hibernate.Sicammindirizzi" />
-        <mapping class="sicimi.api.persistence.hibernate.Sicammlog" />
+        <mapping class="sicimi.api.persistence.hibernate.SiccomddtOut" />
+        <mapping class="sicimi.api.persistence.hibernate.SiccomfattureFornitori" />
         <mapping class="sicimi.api.persistence.hibernate.Sicammaziende" />
         <mapping class="sicimi.api.persistence.hibernate.Sicammcommesse" />
+        <mapping class="sicimi.api.persistence.hibernate.SiccomddtIn" />
+        <mapping class="sicimi.api.persistence.hibernate.Siccomofferte" />
         <mapping class="sicimi.api.persistence.hibernate.Siccomordini" />
+        <mapping class="sicimi.api.persistence.hibernate.SictecnumeriFabbrica" />
+        <mapping class="sicimi.api.persistence.hibernate.SiccomfattureClienti" />
         <mapping class="sicimi.api.persistence.hibernate.Sicammtipo" />
     </session-factory>
 </hibernate-configuration>

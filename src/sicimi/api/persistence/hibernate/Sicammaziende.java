@@ -1,6 +1,6 @@
 package sicimi.api.persistence.hibernate;
 
-// Generated Mar 4, 2013 4:32:35 PM by Hibernate Tools 3.4.0.CR1
+// Generated Mar 8, 2013 11:51:09 AM by Hibernate Tools 4.0.0
 
 import java.util.HashSet;
 import java.util.Set;
@@ -30,6 +30,7 @@ public class Sicammaziende implements java.io.Serializable {
 	private Set<Sicammindirizzi> sicammindirizzis = new HashSet<Sicammindirizzi>(
 			0);
 	private Set<Sicammcommesse> sicammcommesses = new HashSet<Sicammcommesse>(0);
+	private Set<SiccomddtIn> siccomddtIns = new HashSet<SiccomddtIn>(0);
 
 	public Sicammaziende() {
 	}
@@ -42,7 +43,7 @@ public class Sicammaziende implements java.io.Serializable {
 			Integer saacatid, String saaragionesociale, String saapiva,
 			String saanote, Integer saapagamentostd,
 			Set<Sicammindirizzi> sicammindirizzis,
-			Set<Sicammcommesse> sicammcommesses) {
+			Set<Sicammcommesse> sicammcommesses, Set<SiccomddtIn> siccomddtIns) {
 		this.saaid = saaid;
 		this.sicammindirizzi = sicammindirizzi;
 		this.saacatid = saacatid;
@@ -52,6 +53,7 @@ public class Sicammaziende implements java.io.Serializable {
 		this.saapagamentostd = saapagamentostd;
 		this.sicammindirizzis = sicammindirizzis;
 		this.sicammcommesses = sicammcommesses;
+		this.siccomddtIns = siccomddtIns;
 	}
 
 	@Id
@@ -135,6 +137,15 @@ public class Sicammaziende implements java.io.Serializable {
 
 	public void setSicammcommesses(Set<Sicammcommesse> sicammcommesses) {
 		this.sicammcommesses = sicammcommesses;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sicammaziende")
+	public Set<SiccomddtIn> getSiccomddtIns() {
+		return this.siccomddtIns;
+	}
+
+	public void setSiccomddtIns(Set<SiccomddtIn> siccomddtIns) {
+		this.siccomddtIns = siccomddtIns;
 	}
 
 }

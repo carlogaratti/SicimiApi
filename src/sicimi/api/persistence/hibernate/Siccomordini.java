@@ -1,6 +1,6 @@
 package sicimi.api.persistence.hibernate;
 
-// Generated Mar 4, 2013 4:32:35 PM by Hibernate Tools 3.4.0.CR1
+// Generated Mar 8, 2013 11:51:09 AM by Hibernate Tools 4.0.0
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -94,7 +94,7 @@ public class Siccomordini implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "SCRdata", length = 10)
+	@Column(name = "SCRdata", length = 0)
 	public Date getScrdata() {
 		return this.scrdata;
 	}
@@ -131,7 +131,7 @@ public class Siccomordini implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "SCRconsegna", length = 10)
+	@Column(name = "SCRconsegna", length = 0)
 	public Date getScrconsegna() {
 		return this.scrconsegna;
 	}

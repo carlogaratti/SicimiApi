@@ -5,35 +5,35 @@ import java.util.HashMap;
 import java.util.List;
 
 import sicimi.api.persistence.AskFor;
-import sicimi.api.persistence.hibernate.Siccomordini;
+import sicimi.api.persistence.hibernate.SictecnumeriFabbrica;
 
-public class SearchOrdini {
+public class SearchNumeriFabbrica {
 	private AskFor askFor;
 	private List<Object> list;
 	private HashMap<String, Object> mapParameters;
 	
-	public SearchOrdini() {
+	public SearchNumeriFabbrica() {
 		this.askFor = new AskFor();
 		mapParameters = new HashMap<String, Object>();
 	}
 	
 	public void runByCommessa(Integer commessa) {
 		setupParametersFor(commessa);
-		list = askFor.exec("ordinibyCommessa", mapParameters);
+		list = askFor.exec("numeriFabbricabyCommessa", mapParameters);
 		
 	}
 	
-	public List<Siccomordini> result() {
-		List<Siccomordini> listOrdini = new ArrayList<Siccomordini>();
+	public List<SictecnumeriFabbrica> result() {
+		List<SictecnumeriFabbrica> listNumeriFabbrica = new ArrayList<SictecnumeriFabbrica>();
 		for (Object anElement : list) {
-			listOrdini.add((Siccomordini)anElement);
+			listNumeriFabbrica.add((SictecnumeriFabbrica)anElement);
 			
 		}
-		return listOrdini;
+		return listNumeriFabbrica;
 	}
 	
 	private void setupParametersFor(Integer commessa) {
-		mapParameters.put("scrcommessa", commessa);
+		mapParameters.put("sacid", commessa);
 	}
-	
+
 }

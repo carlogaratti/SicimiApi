@@ -2,14 +2,37 @@
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
 
 <hibernate-reverse-engineering>
-	<table-filter match-name="SICAMMAziende" match-catalog="Sicimi01"></table-filter>
+	<table-filter match-name="SICCOMOfferteExtended"
+		match-catalog="Sicimi01">
+	</table-filter>
+	<table-filter match-name="SICCOMOfferte" match-catalog="Sicimi01"></table-filter>
 	<table-filter match-name="SICAMMCommesse"
 		match-catalog="Sicimi01">
 	</table-filter>
+	<table-filter match-name="SICAMMAziende" match-catalog="Sicimi01"></table-filter>
 	<table-filter match-name="SICAMMTipo" match-catalog="Sicimi01"></table-filter>
-	<table-filter match-name="SICAMMLog" match-catalog="Sicimi01"></table-filter>
 	<table-filter match-name="SICAMMIndirizzi"
 		match-catalog="Sicimi01">
 	</table-filter>
+	<table-filter match-name="SICCOMDdtOut" match-catalog="Sicimi01"></table-filter>
 	<table-filter match-name="SICCOMOrdini" match-catalog="Sicimi01"></table-filter>
+	<table-filter match-name="SICCOMDdtIn" match-catalog="Sicimi01"></table-filter>
+	<table-filter match-name="SICCOMDdtInExtended"
+		match-catalog="Sicimi01" exclude="false">
+	</table-filter>
+	<table-filter match-name="SICCOMFattureClienti"
+		match-catalog="Sicimi01">
+	</table-filter>
+	<table-filter match-name="SICCOMFattureClientiExtended"
+		match-catalog="Sicimi01">
+	</table-filter>
+	<table-filter match-name="SICCOMFattureFornitori"
+		match-catalog="Sicimi01">
+	</table-filter>
+	<table-filter match-name="SICCOMFattureFornitoriExtended"
+		match-catalog="Sicimi01">
+	</table-filter>
+	<table-filter match-name="SICTECNumeriFabbrica"
+		match-catalog="Sicimi01">
+	</table-filter>
 </hibernate-reverse-engineering>

@@ -1,5 +1,6 @@
 package sicimi.api;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,7 +14,7 @@ public class SearchCommesse {
 
 	private AskFor askFor;
 	private HashMap<String, Object> mapParameters;
-	private List<Sicammcommesse> listCommesse;
+	private List<Object> list;
 	
 	public SearchCommesse() {
 		this.askFor = new AskFor();
@@ -22,15 +23,20 @@ public class SearchCommesse {
 	
 	public void runWhitYear(Integer year) throws ApiException{
 		setupParametersFor(year);
-		listCommesse = askFor.commesse(mapParameters);
+		list = askFor.exec("allCommesse", mapParameters);
 
 	}
 	
 	public void runWithAll(Map<String, Object> map) throws ApiException {
-		listCommesse = askFor.commesse(map);
+		list = askFor.exec("allCommesse", map);
 	}
 	
-	public List<Sicammcommesse> result(){
+	public List<Sicammcommesse> result() {
+		List<Sicammcommesse> listCommesse = new ArrayList<Sicammcommesse>();
+		for (Object anElement : list) {
+			listCommesse.add((Sicammcommesse)anElement);
+			
+		}
 		return listCommesse;
 	}
 	

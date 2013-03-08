@@ -1,6 +1,6 @@
 package sicimi.api.persistence.hibernate;
 
-// Generated Mar 4, 2013 4:32:35 PM by Hibernate Tools 3.4.0.CR1
+// Generated Mar 8, 2013 11:51:09 AM by Hibernate Tools 4.0.0
 
 import java.util.HashSet;
 import java.util.Set;

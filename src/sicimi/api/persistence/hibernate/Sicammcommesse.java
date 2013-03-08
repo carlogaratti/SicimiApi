@@ -1,8 +1,10 @@
 package sicimi.api.persistence.hibernate;
 
-// Generated Mar 4, 2013 4:32:35 PM by Hibernate Tools 3.4.0.CR1
+// Generated Mar 8, 2013 11:51:09 AM by Hibernate Tools 4.0.0
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,7 +12,10 @@ import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -36,6 +41,13 @@ public class Sicammcommesse implements java.io.Serializable {
 	private Boolean sacspostata;
 	private Byte sacprodotto;
 	private String sacnote;
+	private Set<SictecnumeriFabbrica> sictecnumeriFabbricas = new HashSet<SictecnumeriFabbrica>(
+			0);
+	private Set<SiccomfattureFornitori> siccomfattureFornitoris = new HashSet<SiccomfattureFornitori>(
+			0);
+	private Set<Siccomofferte> siccomoffertes = new HashSet<Siccomofferte>(0);
+	private Set<SiccomfattureClienti> siccomfattureClientis = new HashSet<SiccomfattureClienti>(
+			0);
 
 	public Sicammcommesse() {
 	}
@@ -44,7 +56,11 @@ public class Sicammcommesse implements java.io.Serializable {
 			Sicammindirizzi sicammindirizzi, String saccommessa, Date sacdata,
 			String sacdescrizione, Date sacdataconsegna, Float sacimporto,
 			String sacriferimenti, Boolean sacevasa, Boolean sacspostata,
-			Byte sacprodotto, String sacnote) {
+			Byte sacprodotto, String sacnote,
+			Set<SictecnumeriFabbrica> sictecnumeriFabbricas,
+			Set<SiccomfattureFornitori> siccomfattureFornitoris,
+			Set<Siccomofferte> siccomoffertes,
+			Set<SiccomfattureClienti> siccomfattureClientis) {
 		this.sicammaziende = sicammaziende;
 		this.sicammtipo = sicammtipo;
 		this.sicammindirizzi = sicammindirizzi;
@@ -58,6 +74,10 @@ public class Sicammcommesse implements java.io.Serializable {
 		this.sacspostata = sacspostata;
 		this.sacprodotto = sacprodotto;
 		this.sacnote = sacnote;
+		this.sictecnumeriFabbricas = sictecnumeriFabbricas;
+		this.siccomfattureFornitoris = siccomfattureFornitoris;
+		this.siccomoffertes = siccomoffertes;
+		this.siccomfattureClientis = siccomfattureClientis;
 	}
 
 	@Id
@@ -111,7 +131,7 @@ public class Sicammcommesse implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "SACdata", length = 10)
+	@Column(name = "SACdata", length = 0)
 	public Date getSacdata() {
 		return this.sacdata;
 	}
@@ -130,7 +150,7 @@ public class Sicammcommesse implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "SACdataconsegna", length = 10)
+	@Column(name = "SACdataconsegna", length = 0)
 	public Date getSacdataconsegna() {
 		return this.sacdataconsegna;
 	}
@@ -191,6 +211,48 @@ public class Sicammcommesse implements java.io.Serializable {
 
 	public void setSacnote(String sacnote) {
 		this.sacnote = sacnote;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sicammcommesse")
+	public Set<SictecnumeriFabbrica> getSictecnumeriFabbricas() {
+		return this.sictecnumeriFabbricas;
+	}
+
+	public void setSictecnumeriFabbricas(
+			Set<SictecnumeriFabbrica> sictecnumeriFabbricas) {
+		this.sictecnumeriFabbricas = sictecnumeriFabbricas;
+	}
+
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "SICCOMFattureFornitoriExtended", catalog = "Sicimi01", joinColumns = { @JoinColumn(name = "SCFFEidcommessa", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "SCFFEidfattura", nullable = false, updatable = false) })
+	public Set<SiccomfattureFornitori> getSiccomfattureFornitoris() {
+		return this.siccomfattureFornitoris;
+	}
+
+	public void setSiccomfattureFornitoris(
+			Set<SiccomfattureFornitori> siccomfattureFornitoris) {
+		this.siccomfattureFornitoris = siccomfattureFornitoris;
+	}
+
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "SICCOMOfferteExtended", catalog = "Sicimi01", joinColumns = { @JoinColumn(name = "SCFEidcommessa", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "SCFEidofferta", nullable = false, updatable = false) })
+	public Set<Siccomofferte> getSiccomoffertes() {
+		return this.siccomoffertes;
+	}
+
+	public void setSiccomoffertes(Set<Siccomofferte> siccomoffertes) {
+		this.siccomoffertes = siccomoffertes;
+	}
+
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "SICCOMFattureClientiExtended", catalog = "Sicimi01", joinColumns = { @JoinColumn(name = "SCFCEidcommessa", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "SCFCEidfattura", nullable = false, updatable = false) })
+	public Set<SiccomfattureClienti> getSiccomfattureClientis() {
+		return this.siccomfattureClientis;
+	}
+
+	public void setSiccomfattureClientis(
+			Set<SiccomfattureClienti> siccomfattureClientis) {
+		this.siccomfattureClientis = siccomfattureClientis;
 	}
 
 }

@@ -6,23 +6,86 @@ import java.util.Map;
 
 import sicimi.api.SearchCliente;
 import sicimi.api.SearchCommesse;
+import sicimi.api.SearchDDTIn;
+import sicimi.api.SearchDDTOut;
+import sicimi.api.SearchFattFornitori;
+import sicimi.api.SearchFattureCliente;
+import sicimi.api.SearchNumeriFabbrica;
+import sicimi.api.SearchOfferte;
 import sicimi.api.SearchOrdini;
 import sicimi.api.SearchTipo;
 import sicimi.api.exception.ApiException;
 import sicimi.api.persistence.hibernate.Sicammaziende;
 import sicimi.api.persistence.hibernate.Sicammcommesse;
 import sicimi.api.persistence.hibernate.Sicammtipo;
-import sicimi.api.persistence.hibernate.Siccomordini;
+import sicimi.api.persistence.hibernate.SiccomddtOut;
+import sicimi.api.persistence.hibernate.Siccomofferte;
 
 
 public class Tester {
 	
 	public static void main(String[] args) {
-		//searchCommesse();
-		//searchCommesseWithMap();
-		//searchTipo();
-		//searchCliente();
+		
+		searchCommesse();
+		searchCommesseWithMap();
+		searchTipo();
+		searchCliente();
 		searchOrdiniByCommessa();
+		searchOffertaByCommessa();
+		
+		searchDDTOutByCommessa();
+		
+		searchddtInByCommessa();
+		searchFattureClienteByCommessa();
+		serachFattureFornitoriByCommessa();
+		
+		serachNumeriFabbricabyId();
+		
+	}
+
+	private static void serachNumeriFabbricabyId() {
+		SearchNumeriFabbrica sf = new SearchNumeriFabbrica();
+		sf.runByCommessa(105);
+		System.out.println(sf.result().size());
+		
+	}
+
+	private static void serachFattureFornitoriByCommessa() {
+		SearchFattFornitori sf = new SearchFattFornitori();
+		sf.runByCommessa(105);
+		System.out.println(sf.result().size());
+		
+	}
+
+	private static void searchFattureClienteByCommessa() {
+		SearchFattureCliente sf = new SearchFattureCliente();
+		sf.runByCommessa(105);
+		System.out.println(sf.result().size());
+		
+	}
+
+	private static void searchddtInByCommessa() {
+		SearchDDTIn ddt = new SearchDDTIn();
+		ddt.runByCommessa(105);
+		ddt.result();
+	}
+
+	private static void searchDDTOutByCommessa() {
+		SearchDDTOut ddtOut = new SearchDDTOut();
+		ddtOut.runByCommessa(917);
+		ddtOut.result();
+		for (SiccomddtOut aDdt : ddtOut.result()) {
+			System.out.println(aDdt.getScdotrasportocura());
+		}
+		
+	}
+
+	private static void searchOffertaByCommessa() {
+		SearchOfferte so = new SearchOfferte();
+		so.runByCommessa(105);
+		for (Siccomofferte anOffer : so.result()) {
+			System.out.println(anOffer.getScoofferta());
+		}
 		
 	}
 
@@ -30,9 +93,6 @@ public class Tester {
 		SearchOrdini searchOrdini = new SearchOrdini();
 		searchOrdini.runByCommessa(18);
 		System.out.println(searchOrdini.result().size());
-		for (Siccomordini anOrdine : searchOrdini.result()) {
-			System.out.println();
-		}
 		
 	}
 
@@ -87,10 +147,8 @@ public class Tester {
 
 	private static void searchCommesse() {
 		SearchCommesse searchCommesse = new SearchCommesse();
-		List<Sicammcommesse> result = null;
 		try {
 			searchCommesse.runWhitYear(2009);
-			result = searchCommesse.result();
 		} catch (ApiException e) {
 			// TODO Auto-generated catch block
 			System.out.println("hi hi " + e.msg());;
