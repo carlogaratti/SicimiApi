@@ -59,69 +59,6 @@ public class AskFor {
 		queryMap.put("numeriFabbricabyCommessa", numeriFabbricabyCommessa);
 	}
 	
-	public List<Sicammcommesse> commesse(Map<String, Object> mapParameters) throws ApiException {
-		
-		try {
-			Session session = factory.openSession();	
-			Query data = session.createQuery(allCommesse);
-		    data = setupQueryParameters(mapParameters, data);
-			List<Sicammcommesse> result = data.list();
-			session.close();
-			return result;
-		} catch (Exception e) {
-			Integer logNumber = log(allCommesse, mapParameters);
-			throw new ApiException(e, allCommesse, logNumber);
-		}
-	}
-	
-	public List<Siccomordini> ordinibyCommessa(Integer commessa) {
-		Session session = factory.openSession();	
-		Query data = session.createQuery(ordinibyCommessa);
-		data.setParameter("scrcommessa", commessa);
-		List<Siccomordini> result = data.list();
-		session.close();
-		return result;
-}
-	
-	public List<Sicammaziende> clienti() {
-			Session session = factory.openSession();	
-			Query data = session.createQuery(allCliente);
-			List<Sicammaziende> result = data.list();
-			session.close();
-			return result;
-	}
-
-
-
-	private Query setupQueryParameters(Map<String, Object> mapParameters, Query data) {
-		Set<String> parameters = mapParameters.keySet();
-		for (String aParameter : parameters) {
-			try {
-				data.setParameter(aParameter, mapParameters.get(aParameter));
-			} catch (HibernateException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		return data;
-	}
-	
-	public static int log(String sql, Map parameters){
-		Session session = factory.openSession();
-		session.beginTransaction();
-		Query data = session.createSQLQuery("select max(idSICAMMLog) from SICAMMLog");
-		int pk = new Integer((Integer)data.list().get(0)) + 1 ;
-		Query query = session.createSQLQuery("insert into SICAMMLog(idSICAMMLog, sqlExecuted, parametri) " +  "values (?,?,?)");
-		query.setInteger(0, pk);
-		query.setString(1, sql.substring(0, sql.length() - 1));
-		query.setString(2, parameters.toString().substring(0, parameters.toString().length()));
-		query.executeUpdate();
-		session.getTransaction().commit();
-		session.close();
-		return pk;
-	}
-	
-	//new 
 	public List<Object> exec(String query, Map<String, Object> mapParameters){
 		Session session = factory.openSession();	
 		Query data = session.createQuery(queryMap.get(query));
@@ -131,14 +68,13 @@ public class AskFor {
 		return result;
 	}
 	
-	
-	
-
-	public List<Sicammtipo> tipi() {
-		Session session = factory.openSession();
-		Query data = session.createQuery(allTipo);
-		List<Sicammtipo> result = data.list();
-		session.close();
-		return result;
+	private Query setupQueryParameters(Map<String, Object> mapParameters, Query data) {
+		Set<String> parameters = mapParameters.keySet();
+		for (String aParameter : parameters) {
+			data.setParameter(aParameter, mapParameters.get(aParameter));
+		}
+		return data;
 	}
+	
+	
 }
