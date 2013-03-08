@@ -1,4 +1,4 @@
-package sicimi.api.persistence;
+package sicimi.api.service;
 
 import java.util.HashMap;
 import java.util.List;

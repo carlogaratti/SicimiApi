@@ -32,13 +32,10 @@ public class Tester {
 		searchCliente();
 		searchOrdiniByCommessa();
 		searchOffertaByCommessa();
-		
 		searchDDTOutByCommessa();
-		
 		searchddtInByCommessa();
 		searchFattureClienteByCommessa();
 		serachFattureFornitoriByCommessa();
-		
 		serachNumeriFabbricabyId();
 		
 	}

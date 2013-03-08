@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import sicimi.api.persistence.AskFor;
 import sicimi.api.persistence.hibernate.SictecnumeriFabbrica;
+import sicimi.api.service.AskFor;
 
 public class SearchNumeriFabbrica {
 	private AskFor askFor;

@@ -5,11 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import sicimi.api.persistence.AskFor;
 import sicimi.api.persistence.hibernate.SiccomddtIn;
 import sicimi.api.persistence.hibernate.SiccomddtInExtended;
+import sicimi.api.service.AskFor;
 
-public class SearchDDTIn {
+public class SearchDDTIn extends Search{
 	
 	private List<SiccomddtIn> result;
 
