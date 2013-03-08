@@ -5,6 +5,7 @@ import java.util.List;
 
 import sicimi.api.service.AskFor;
 
+
 public abstract class Search {
 	
 	protected AskFor askFor;
