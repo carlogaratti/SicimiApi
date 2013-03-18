@@ -37,6 +37,8 @@ public class AskFor {
 	private static final String allTipo = "select tipo from Sicammtipo tipo";
 	private static final String allCliente = " select aziende from Sicammaziende aziende " +
 											" where saacatid = 12";
+	private static final String allAziende = " select aziende from Sicammaziende aziende "+
+											 " where saacatid = :saacatid";
 	private static final String ordinibyCommessa = " select ordini from Siccomordini ordini where ordini.scrcommessa = :scrcommessa";
 	private static final String offertebyCommessaResult = " select offerta from Siccomofferte offerta join offerta.sicammcommesses commesse where commesse.sacid in (:sacid) ";
 	private static final String ddtOutputbyCommessea = "select ddtOut from SiccomddtOut ddtOut where ddtOut.scdocommessa =:scdocommessa";
@@ -64,6 +66,7 @@ public class AskFor {
 		queryMap.put("numeriFabbricabyCommessa", numeriFabbricabyCommessa);
 		queryMap.put("nazioni", nazioni);
 		queryMap.put("pagamenti", pagamenti);
+		queryMap.put("allAziende", allAziende);
 	}
 	
 	public void begin(){

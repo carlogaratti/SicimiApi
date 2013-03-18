@@ -37,7 +37,7 @@ public class SearchCommesse extends Search{
 	}
 	
 	private void setupParametersFor(Integer year) {
-		mapParameters.put("year", year);
+		mapParameters.put("saacatid", year);
 		mapParameters.put("satId", null);
 		mapParameters.put("saaId", null);
 		mapParameters.put("evasa", null);
