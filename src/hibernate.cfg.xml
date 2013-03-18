@@ -14,14 +14,17 @@
         <mapping class="sicimi.api.persistence.hibernate.SiccomddtInExtended" />
         <mapping class="sicimi.api.persistence.hibernate.Sicammindirizzi" />
         <mapping class="sicimi.api.persistence.hibernate.SiccomddtOut" />
-        <mapping class="sicimi.api.persistence.hibernate.SiccomfattureFornitori" />
-        <mapping class="sicimi.api.persistence.hibernate.Sicammaziende" />
+        <mapping class="sicimi.api.persistence.hibernate.Sicammcategorie" />
         <mapping class="sicimi.api.persistence.hibernate.Sicammcommesse" />
-        <mapping class="sicimi.api.persistence.hibernate.SiccomddtIn" />
+        <mapping class="sicimi.api.persistence.hibernate.Sictecnazioni" />
         <mapping class="sicimi.api.persistence.hibernate.Siccomofferte" />
+        <mapping class="sicimi.api.persistence.hibernate.Sicammtipo" />
+        <mapping class="sicimi.api.persistence.hibernate.SiccomfattureClienti" />
+        <mapping class="sicimi.api.persistence.hibernate.Sicammpagamenti" />
+        <mapping class="sicimi.api.persistence.hibernate.Sicammaziende" />
+        <mapping class="sicimi.api.persistence.hibernate.SiccomfattureFornitori" />
+        <mapping class="sicimi.api.persistence.hibernate.SiccomddtIn" />
         <mapping class="sicimi.api.persistence.hibernate.Siccomordini" />
         <mapping class="sicimi.api.persistence.hibernate.SictecnumeriFabbrica" />
-        <mapping class="sicimi.api.persistence.hibernate.SiccomfattureClienti" />
-        <mapping class="sicimi.api.persistence.hibernate.Sicammtipo" />
     </session-factory>
 </hibernate-configuration>

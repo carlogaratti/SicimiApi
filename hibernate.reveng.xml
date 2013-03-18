@@ -35,4 +35,13 @@
 	<table-filter match-name="SICTECNumeriFabbrica"
 		match-catalog="Sicimi01">
 	</table-filter>
+	<table-filter match-name="SICTECNazioni"
+		match-catalog="Sicimi01">
+	</table-filter>
+	<table-filter match-name="SICAMMCategorie"
+		match-catalog="Sicimi01">
+	</table-filter>
+	<table-filter match-name="SICAMMPagamenti"
+		match-catalog="Sicimi01">
+	</table-filter>
 </hibernate-reverse-engineering>

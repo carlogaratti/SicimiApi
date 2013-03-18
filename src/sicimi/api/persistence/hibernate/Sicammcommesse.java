@@ -1,6 +1,6 @@
 package sicimi.api.persistence.hibernate;
 
-// Generated Mar 8, 2013 11:51:09 AM by Hibernate Tools 4.0.0
+// Generated Mar 15, 2013 4:48:02 PM by Hibernate Tools 4.0.0
 
 import java.util.Date;
 import java.util.HashSet;
@@ -28,9 +28,9 @@ import javax.persistence.TemporalType;
 public class Sicammcommesse implements java.io.Serializable {
 
 	private Integer sacid;
-	private Sicammaziende sicammaziende;
+	private Sicammaziende sicammaziendeBySacdestinazione;
+	private Sicammaziende sicammaziendeBySaccliente;
 	private Sicammtipo sicammtipo;
-	private Sicammindirizzi sicammindirizzi;
 	private String saccommessa;
 	private Date sacdata;
 	private String sacdescrizione;
@@ -52,18 +52,18 @@ public class Sicammcommesse implements java.io.Serializable {
 	public Sicammcommesse() {
 	}
 
-	public Sicammcommesse(Sicammaziende sicammaziende, Sicammtipo sicammtipo,
-			Sicammindirizzi sicammindirizzi, String saccommessa, Date sacdata,
-			String sacdescrizione, Date sacdataconsegna, Float sacimporto,
-			String sacriferimenti, Boolean sacevasa, Boolean sacspostata,
-			Byte sacprodotto, String sacnote,
-			Set<SictecnumeriFabbrica> sictecnumeriFabbricas,
+	public Sicammcommesse(Sicammaziende sicammaziendeBySacdestinazione,
+			Sicammaziende sicammaziendeBySaccliente, Sicammtipo sicammtipo,
+			String saccommessa, Date sacdata, String sacdescrizione,
+			Date sacdataconsegna, Float sacimporto, String sacriferimenti,
+			Boolean sacevasa, Boolean sacspostata, Byte sacprodotto,
+			String sacnote, Set<SictecnumeriFabbrica> sictecnumeriFabbricas,
 			Set<SiccomfattureFornitori> siccomfattureFornitoris,
 			Set<Siccomofferte> siccomoffertes,
 			Set<SiccomfattureClienti> siccomfattureClientis) {
-		this.sicammaziende = sicammaziende;
+		this.sicammaziendeBySacdestinazione = sicammaziendeBySacdestinazione;
+		this.sicammaziendeBySaccliente = sicammaziendeBySaccliente;
 		this.sicammtipo = sicammtipo;
-		this.sicammindirizzi = sicammindirizzi;
 		this.saccommessa = saccommessa;
 		this.sacdata = sacdata;
 		this.sacdescrizione = sacdescrizione;
@@ -92,13 +92,25 @@ public class Sicammcommesse implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "SACcliente")
-	public Sicammaziende getSicammaziende() {
-		return this.sicammaziende;
+	@JoinColumn(name = "SACdestinazione")
+	public Sicammaziende getSicammaziendeBySacdestinazione() {
+		return this.sicammaziendeBySacdestinazione;
 	}
 
-	public void setSicammaziende(Sicammaziende sicammaziende) {
-		this.sicammaziende = sicammaziende;
+	public void setSicammaziendeBySacdestinazione(
+			Sicammaziende sicammaziendeBySacdestinazione) {
+		this.sicammaziendeBySacdestinazione = sicammaziendeBySacdestinazione;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "SACcliente")
+	public Sicammaziende getSicammaziendeBySaccliente() {
+		return this.sicammaziendeBySaccliente;
+	}
+
+	public void setSicammaziendeBySaccliente(
+			Sicammaziende sicammaziendeBySaccliente) {
+		this.sicammaziendeBySaccliente = sicammaziendeBySaccliente;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -109,16 +121,6 @@ public class Sicammcommesse implements java.io.Serializable {
 
 	public void setSicammtipo(Sicammtipo sicammtipo) {
 		this.sicammtipo = sicammtipo;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "SACdestinazione")
-	public Sicammindirizzi getSicammindirizzi() {
-		return this.sicammindirizzi;
-	}
-
-	public void setSicammindirizzi(Sicammindirizzi sicammindirizzi) {
-		this.sicammindirizzi = sicammindirizzi;
 	}
 
 	@Column(name = "SACcommessa", length = 7)

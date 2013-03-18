@@ -42,6 +42,9 @@ public class SearchCommesse extends Search{
 		mapParameters.put("saaId", null);
 		mapParameters.put("evasa", null);
 		mapParameters.put("sacdescrizione", null);
+		mapParameters.put("sacdataconsegna", null);
+		mapParameters.put("startDate", null);
+		mapParameters.put("endDate", null);
 	}
 	
 	

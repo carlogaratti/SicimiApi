@@ -1,6 +1,6 @@
 package sicimi.api.persistence.hibernate;
 
-// Generated Mar 8, 2013 11:51:09 AM by Hibernate Tools 4.0.0
+// Generated Mar 15, 2013 4:48:02 PM by Hibernate Tools 4.0.0
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;

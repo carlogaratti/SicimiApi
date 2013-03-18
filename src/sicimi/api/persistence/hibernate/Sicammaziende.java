@@ -1,12 +1,14 @@
 package sicimi.api.persistence.hibernate;
 
-// Generated Mar 8, 2013 11:51:09 AM by Hibernate Tools 4.0.0
+// Generated Mar 15, 2013 4:48:02 PM by Hibernate Tools 4.0.0
 
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -20,60 +22,59 @@ import javax.persistence.Table;
 @Table(name = "SICAMMAziende", catalog = "Sicimi01")
 public class Sicammaziende implements java.io.Serializable {
 
-	private int saaid;
-	private Sicammindirizzi sicammindirizzi;
+	private Integer saaid;
+	private Sicammpagamenti sicammpagamenti;
 	private Integer saacatid;
 	private String saaragionesociale;
 	private String saapiva;
 	private String saanote;
-	private Integer saapagamentostd;
+	private Set<Sicammcommesse> sicammcommessesForSaccliente = new HashSet<Sicammcommesse>(
+			0);
 	private Set<Sicammindirizzi> sicammindirizzis = new HashSet<Sicammindirizzi>(
 			0);
-	private Set<Sicammcommesse> sicammcommesses = new HashSet<Sicammcommesse>(0);
+	private Set<Sicammcommesse> sicammcommessesForSacdestinazione = new HashSet<Sicammcommesse>(
+			0);
 	private Set<SiccomddtIn> siccomddtIns = new HashSet<SiccomddtIn>(0);
 
 	public Sicammaziende() {
 	}
 
-	public Sicammaziende(int saaid) {
-		this.saaid = saaid;
-	}
-
-	public Sicammaziende(int saaid, Sicammindirizzi sicammindirizzi,
-			Integer saacatid, String saaragionesociale, String saapiva,
-			String saanote, Integer saapagamentostd,
+	public Sicammaziende(Sicammpagamenti sicammpagamenti, Integer saacatid,
+			String saaragionesociale, String saapiva, String saanote,
+			Set<Sicammcommesse> sicammcommessesForSaccliente,
 			Set<Sicammindirizzi> sicammindirizzis,
-			Set<Sicammcommesse> sicammcommesses, Set<SiccomddtIn> siccomddtIns) {
-		this.saaid = saaid;
-		this.sicammindirizzi = sicammindirizzi;
+			Set<Sicammcommesse> sicammcommessesForSacdestinazione,
+			Set<SiccomddtIn> siccomddtIns) {
+		this.sicammpagamenti = sicammpagamenti;
 		this.saacatid = saacatid;
 		this.saaragionesociale = saaragionesociale;
 		this.saapiva = saapiva;
 		this.saanote = saanote;
-		this.saapagamentostd = saapagamentostd;
+		this.sicammcommessesForSaccliente = sicammcommessesForSaccliente;
 		this.sicammindirizzis = sicammindirizzis;
-		this.sicammcommesses = sicammcommesses;
+		this.sicammcommessesForSacdestinazione = sicammcommessesForSacdestinazione;
 		this.siccomddtIns = siccomddtIns;
 	}
 
 	@Id
+	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "SAAid", unique = true, nullable = false)
-	public int getSaaid() {
+	public Integer getSaaid() {
 		return this.saaid;
 	}
 
-	public void setSaaid(int saaid) {
+	public void setSaaid(Integer saaid) {
 		this.saaid = saaid;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "SAAindirizzostd")
-	public Sicammindirizzi getSicammindirizzi() {
-		return this.sicammindirizzi;
+	@JoinColumn(name = "SAApagamentostd")
+	public Sicammpagamenti getSicammpagamenti() {
+		return this.sicammpagamenti;
 	}
 
-	public void setSicammindirizzi(Sicammindirizzi sicammindirizzi) {
-		this.sicammindirizzi = sicammindirizzi;
+	public void setSicammpagamenti(Sicammpagamenti sicammpagamenti) {
+		this.sicammpagamenti = sicammpagamenti;
 	}
 
 	@Column(name = "SAAcatid")
@@ -112,13 +113,14 @@ public class Sicammaziende implements java.io.Serializable {
 		this.saanote = saanote;
 	}
 
-	@Column(name = "SAApagamentostd")
-	public Integer getSaapagamentostd() {
-		return this.saapagamentostd;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sicammaziendeBySaccliente")
+	public Set<Sicammcommesse> getSicammcommessesForSaccliente() {
+		return this.sicammcommessesForSaccliente;
 	}
 
-	public void setSaapagamentostd(Integer saapagamentostd) {
-		this.saapagamentostd = saapagamentostd;
+	public void setSicammcommessesForSaccliente(
+			Set<Sicammcommesse> sicammcommessesForSaccliente) {
+		this.sicammcommessesForSaccliente = sicammcommessesForSaccliente;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sicammaziende")
@@ -130,13 +132,14 @@ public class Sicammaziende implements java.io.Serializable {
 		this.sicammindirizzis = sicammindirizzis;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sicammaziende")
-	public Set<Sicammcommesse> getSicammcommesses() {
-		return this.sicammcommesses;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sicammaziendeBySacdestinazione")
+	public Set<Sicammcommesse> getSicammcommessesForSacdestinazione() {
+		return this.sicammcommessesForSacdestinazione;
 	}
 
-	public void setSicammcommesses(Set<Sicammcommesse> sicammcommesses) {
-		this.sicammcommesses = sicammcommesses;
+	public void setSicammcommessesForSacdestinazione(
+			Set<Sicammcommesse> sicammcommessesForSacdestinazione) {
+		this.sicammcommessesForSacdestinazione = sicammcommessesForSacdestinazione;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sicammaziende")
@@ -146,6 +149,11 @@ public class Sicammaziende implements java.io.Serializable {
 
 	public void setSiccomddtIns(Set<SiccomddtIn> siccomddtIns) {
 		this.siccomddtIns = siccomddtIns;
+	}
+	
+	@Override
+	public String toString() {
+		return saaragionesociale;
 	}
 
 }
